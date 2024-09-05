@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/webjars/bootstrap/5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <style>
+        .col-yellowstrip {
+            height: 56px;
+            background-color: #FEB640;
+            border-bottom: 1px solid #CCC;
+        }
+        .no-padding-margin {
+            padding: 0;
+            margin: 0;
+        }
+        .col-custom {
+            background-color: #F2F2F2;
+            width: 100%;
+            height: 450px;
+        }
+        .mb-4 .form-control {
+            width: 400px;
+        }
+        button[type="submit"] {
+            width: 400px;
+        }
+        .mb-4 + .d-grid {
+            margin-top: 30px;
+        }
+    </style>
+    <title>TODOs App</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 no-padding-margin">
+            <div class="container-fluid mainbody no-padding-margin">
+                <div class="row row-name bg-warning text-white align-items-center no-padding-margin">
+                    <div class="col col-yellowstrip">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-3 no-padding-margin">
+                    <div class="col">
+                        <h2 class="text-center" style="color: #FEB640;">TODOs</h2>
+                    </div>
+                </div>
+<div th:if="${error}" class="alert alert-danger" role="alert">
+            <p th:text="${error}"></p>
+        </div>                <div class="row justify-content-center mt-3">
+                    <div class="col-sm-8 col-md-6 col-lg-6 col-custom d-flex justify-content-center align-items-center">
+                        <form th:action="@{/Authentication}" method="post">
+                        
+                        
+                            <h3 class="text-center mb-4" style="color: #FEB640;">Login</h3>
+                            <div class="mb-4">
+                                 <input type="email" class="form-control" id="username" name="username" placeholder="Enter your Email" required>
+                            </div>
+                            <div class="mb-4">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" style="background-color: #FEB640; border-color:#FEB640;" type="submit">LOGIN</button>
+                            </div>
+                          <div class="text-center mt-3">
+                <a th:href="@{/registration}" class="btn btn-link">Dont's have an account?</a>
+            </div>
+                            
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

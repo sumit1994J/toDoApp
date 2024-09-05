@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/webjars/bootstrap/5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+	
+    <style>
+        .col-yellowstrip {
+            height: 56px;
+            background-color: #FEB640;
+            border-bottom: 1px solid #CCC;
+        }
+        .no-padding-margin {
+            padding: 0;
+            margin: 0;
+        }
+        .col-custom {
+            background-color: #F2F2F2;
+            width: 100%;
+            height: 450px;
+        }
+        .mb-4 .form-control {
+            width: 400px;
+        }
+		 #passwordGroup {
+        display: none;
+    }
+        button[type="submit"] {
+            width: 400px;
+        }
+        .mb-4 + .d-grid {
+            margin-top: 30px;
+        }
+        /* Style for the back button */
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            color: #FEB640;
+            cursor: pointer;
+        }
+    </style>
+    <title>TODOs App</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 no-padding-margin">
+            <div class="container-fluid mainbody no-padding-margin">
+                <div class="row row-name bg-warning text-white align-items-center no-padding-margin">
+                    <div class="col col-yellowstrip">
+                        <!-- Back button with left arrow icon -->
+                      
+                    </div>
+                </div>
+
+              <div class="row justify-content-between align-items-center mt-3 no-padding-margin">
+    
+        <div class="col-auto" style="padding:0;">
+    <a th:href="@{/home}" class="btn btn-lg" style="text-decoration: none;">
+        <button type="button" style="background-color:white; border: none;">
+            <i class="fas fa-arrow-left" style="color: black;"></i> 
+        </button>
+    </a>
+</div>
+   
+    <div class="col text-center">
+        <h2 style="color: #FEB640;">TODOs</h2>
+    </div>
+</div>
+
+
+
+				 <div class="row justify-content-center mt-3">
+                    <div class="col-sm-8 col-md-6 col-lg-6 col-custom d-flex justify-content-center align-items-center">
+                        <form action="#" th:action="@{/updateSubmit}"  method="post">
+                        
+                        <div class="message text-center" style="color:green; font-size:20px;" th:if="${message != null}">
+    [[${message}]] 
+    </div>
+                         
+        <div class="mb-3">
+             <input type="email" class="form-control" id="email" name="email" th:value="${userDetails.email}" required readonly>
+        </div>
+        <div class="mb-3">
+           <input type="text" class="form-control" id="name" name="name" th:value="${userDetails.name}" required readonly>
+        </div>
+        
+        <div class="mb-3">
+           <input type="text" class="form-control" id="contact" name="contact" th:value="${userDetails.contact}" required>
+        </div>
+		
+		        <!-- Inside the form -->
+<div class="form-check form-switch mb-3">
+    
+    <label class="form-check-label" for="changePasswordToggle">Do you want to change the password?</label>
+	
+	<input class="form-check-input" type="checkbox" id="changePasswordToggle">
+</div>
+<!-- Password field (wrapped in a div for easier manipulation) -->
+<div id="passwordGroup" class="mb-3" style="display: none;">
+      <input type="password" class="form-control" id="password" name="password" >
+    
+</div>
+<!-- Confirm Password field (wrapped in a div for easier manipulation) -->
+<div id="confirmPasswordGroup" class="mb-3" style="display: none;">
+   
+    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+</div>
+
+
+
+        <button type="submit" class="btn btn-primary" style="background-color: #FEB640; border-color:#FEB640;">Register</button>
+    </form>
+					
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-3">
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var changePasswordToggle = document.getElementById('changePasswordToggle');
+        var passwordGroup = document.getElementById('passwordGroup');
+        var confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+
+        changePasswordToggle.addEventListener('change', function () {
+            if (changePasswordToggle.checked) {
+                passwordGroup.style.display = 'block';
+                confirmPasswordGroup.style.display = 'block';
+            } else {
+                passwordGroup.style.display = 'none';
+                confirmPasswordGroup.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var passwordField = document.getElementById('password');
+        var confirmPasswordField = document.getElementById('confirmPassword');
+
+        // Function to validate if passwords match
+        function validatePasswords() {
+            if (confirmPasswordField.value !== passwordField.value) {
+                confirmPasswordField.setCustomValidity("Passwords do not match");
+            } else {
+                confirmPasswordField.setCustomValidity('');
+            }
+        }
+
+        // Add input event listeners to both password fields
+        passwordField.addEventListener('input', validatePasswords);
+        confirmPasswordField.addEventListener('input', validatePasswords);
+
+        var changePasswordToggle = document.getElementById('changePasswordToggle');
+        var passwordGroup = document.getElementById('passwordGroup');
+        var confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+
+        changePasswordToggle.addEventListener('change', function () {
+            if (changePasswordToggle.checked) {
+                passwordGroup.style.display = 'block';
+                confirmPasswordGroup.style.display = 'block';
+                validatePasswords(); // Call the function to validate passwords when fields become visible
+            } else {
+                passwordGroup.style.display = 'none';
+                confirmPasswordGroup.style.display = 'none';
+                confirmPasswordField.setCustomValidity(''); // Clear any existing validation message
+            }
+        });
+    });
+</script>
+
+
+
+</body>
+
+
+</html>
